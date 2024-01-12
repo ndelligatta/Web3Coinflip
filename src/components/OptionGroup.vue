@@ -41,6 +41,7 @@ const selectPrice = (price) => {
     <b-button-group>
         <b-button 
           class="btn-lg"
+          id="options"
           v-for="option in options"
           :key="option.id"
           :style="{
@@ -123,10 +124,13 @@ h1 {
 }
 .btn-lg {
   padding: 15px 20px; /* Example padding values for larger size */
-  /* font-size: 20px; /* Example font size for larger size */ 
+  font-size: 20px; /* Example font size for larger size */ 
   flex: 1;
   min-width: 30%; /* Set a fixed width for the buttons */
   margin: 5px; /* Add margin between buttons */
+}
+#options {
+    min-width: 150px;
 }
 @media screen and (max-width: 600px) {
   /* Adjustments for smaller screens */
