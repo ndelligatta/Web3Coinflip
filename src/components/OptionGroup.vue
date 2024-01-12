@@ -55,7 +55,7 @@ const selectPrice = (price) => {
       
     <hr style="border: 0; height: 1px; background-color: #ccc; margin: 20px 0;">
       
-    <h1 style="margin-top: 10px;">How much do you want to win 😉💰</h1>
+    <h1 style="margin-top: 10px;">How much do you want to win?😉💰</h1>
     
     <b-container>
     <div class="prices">
