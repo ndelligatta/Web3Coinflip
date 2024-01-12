@@ -6,9 +6,16 @@
 //const props = defineProps(["rows", "amount", "ref", "emit"]);
 //const emit = defineEmits([prop.emit.toString()]);
 import DisplayImage from "./DisplayImage.vue"
-import { ref } from 'vue';
+import { ref, computed  } from 'vue';
+import { store } from '../util/store.js'
+
 const selectedOption = ref(null);
 const selectedPrice = ref(null);
+const flipResult = ref(null);
+const flipNumber = ref(0);
+
+const HEADS = false;
+const TAILS = true;
 
 const options = [
   { id: 1, label: "Heads"},
@@ -34,12 +41,30 @@ const selectPrice = (price) => {
   selectedPrice.value = selectedPrice.value === price ? null : price;
 };
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+// Heads - False, Tails - True
+// Only cause Tails starts with T
+// Subject to change
 
-var randomInt = getRandomInt(1, 10); // This will generate a random integer between 1 and 10 (inclusive)
-console.log(randomInt);
+const readFlip = () => {
+    return flipResult.value ? "Tails" : "Heads"
+};
+const getFlip = () => {
+    flipResult.value = (Math.floor(Math.random() * (100 - 1 + 1)) + 1) % 2 == 0;
+    flipNumber.value += 1
+    store.appendFlip(readFlip().slice(0, 1))
+    console.log(readFlip().slice(0, 1))
+    console.log("Button pressed");
+};
+
+
+
+const flipResultMessage = computed(() => {
+    if (flipResult.value == null) {
+        return "does not exist"
+    } else {
+        return `${flipNumber.value} ${readFlip()}`
+    }
+});
 
 
 </script>
@@ -118,10 +143,14 @@ console.log(randomInt);
           class="btn-lg" 
           id="d-o-n"
           style="backgroundColor: #0ab9a7; color: black;"
+          @click="getFlip()"
           > <!--@click="changeImage()"  -->
             Double or Nothing 🔥
         </b-button>
     </div>
+    <h1> The coin result is 
+        {{ flipResultMessage }} 
+    </h1>
 </div> 
 </template>
 

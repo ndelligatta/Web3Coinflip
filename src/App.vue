@@ -1,20 +1,21 @@
 <script setup>
 import NavigationBar from "./components/NavigationBar.vue"
-import DisplayImage from "./components/DisplayImage.vue"
 import OptionGroup from './components/OptionGroup.vue'
 import TestStart from './components/TestStart.vue'
 import { ref } from 'vue';
+
 const walletConnected = ref(false);
+
 const handleWalletConnection = (data) => {
   console.log("I recieved the value", data)
   if (data) {
     walletConnected.value = true
   }
-}
+};
 </script>
 
 <template>
-  <div class="app">
+  <div>
     <NavigationBar/>
     <div class="d-flex justify-content-center vh-100">
       <div class="text-center">

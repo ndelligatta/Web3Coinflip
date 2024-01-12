@@ -1,8 +1,11 @@
 <script setup>
-let coinFlipHistory = ['H'];
+import { store } from '../util/store.js'
+let coinFlipHistory = store.coinFlipHistory;
 </script>
 
 <template>
+<!-- TODO: Add a collapse for social media icons on mobile -->
+<!-- TODO: Fix flipHistory so it doesn't overlap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <div>
   <b-navbar class="custom-navbar" type="dark" variant="dark">

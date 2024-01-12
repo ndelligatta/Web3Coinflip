@@ -18,7 +18,8 @@ const emitWalletStatus = (bool) => {
       @click="emitWalletStatus(true)">
         Connect wallet
     </b-button>
-    <h1> Welcome. Please connect your wallet.</h1>
+    <h1>Welcome.</h1>
+    <h1> Please connect your wallet.</h1>
 </div>
 </template>
 
