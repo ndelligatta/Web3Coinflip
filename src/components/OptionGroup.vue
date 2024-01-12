@@ -5,6 +5,7 @@
 // Emit contains value that parent will listen to with ref() for your response
 //const props = defineProps(["rows", "amount", "ref", "emit"]);
 //const emit = defineEmits([prop.emit.toString()]);
+import DisplayImage from "./DisplayImage.vue"
 import { ref } from 'vue';
 const selectedOption = ref(null);
 const selectedPrice = ref(null);
@@ -33,10 +34,19 @@ const selectPrice = (price) => {
   selectedPrice.value = selectedPrice.value === price ? null : price;
 };
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var randomInt = getRandomInt(1, 10); // This will generate a random integer between 1 and 10 (inclusive)
+console.log(randomInt);
+
+
 </script>
 
 <template>
 <div>
+    <DisplayImage size="200px" path="../src/assets/angled_coin.png"/> 
     <h1>Heads or Tails🤔</h1>
     <b-button-group>
         <b-button 

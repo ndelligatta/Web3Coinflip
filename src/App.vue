@@ -23,7 +23,6 @@ const handleWalletConnection = (data) => {
             <TestStart @walletConnected="handleWalletConnection"/>
           </div>
           <div v-else>
-            <DisplayImage size="200px" path="src/assets/angled_coin.png"/>
             <OptionGroup/>
           </div>
         </div>
