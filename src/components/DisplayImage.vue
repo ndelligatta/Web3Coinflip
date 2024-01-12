@@ -3,6 +3,7 @@ const props = defineProps(['path', 'size']);
 </script>
 
 <template>
+<div>
     <img 
     :src="props.path"
     :style="{
@@ -10,6 +11,7 @@ const props = defineProps(['path', 'size']);
         height: auto
     }"
     >
+</div>
 </template>
 
 <style scoped>
