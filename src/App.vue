@@ -22,7 +22,4 @@ import OptionGroup from './components/OptionGroup.vue'
 h1 {
   color: white;
 }
-.btn-lg {
-  font-size: 30px;
-}
 </style>
