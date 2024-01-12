@@ -18,6 +18,11 @@ let coinFlipHistory = ['H'];
           <i class="fab fa-telegram"></i>
         </a>
       </b-nav-item>
+      <b-nav-item>
+        <a href="#" class="nav-link">
+          <i class="fa-solid fa-book"></i>
+        </a>
+      </b-nav-item>
       <!-- Add more social media icons as needed -->
     </b-navbar-nav>
 
