@@ -2,6 +2,7 @@
 import DisplayImage from "./DisplayImage.vue"
 const emit = defineEmits(['walletConnected']);
 
+/* TODO: Make wallet status a global state that anyone can see  */
 const emitWalletStatus = (bool) => {
     emit('walletConnected', bool);
     console.log("I just emitted true to parent")
