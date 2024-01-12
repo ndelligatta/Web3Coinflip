@@ -10,7 +10,7 @@ import OptionGroup from './components/OptionGroup.vue'
     <div class="d-flex justify-content-center vh-100">
       <div class="text-center">
         <div class="app-container">
-          <DisplayImage size="200px" path="src/assets/metis-logo.png"/>
+          <DisplayImage size="200px" path="src/assets/angled_coin.png"/>
           <OptionGroup/>
         </div>
       </div>
