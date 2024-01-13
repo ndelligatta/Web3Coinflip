@@ -6,11 +6,16 @@
 //const props = defineProps(["rows", "amount", "ref", "emit"]);
 //const emit = defineEmits([prop.emit.toString()]);
 import DisplayImage from "./DisplayImage.vue"
-import { ref, computed  } from 'vue';
+import { ref, computed, watch, reactive  } from 'vue';
 import { store } from '../util/store.js'
 
 const selectedOption = ref(null);
 const selectedPrice = ref(null);
+const selectedChoices = reactive({
+  price: null,
+  option: null
+})
+
 const flipResult = ref(null);
 const flipNumber = ref(0);
 
@@ -33,6 +38,9 @@ const prices2 = [
   { id: 6, label: "2" }
 ];
 
+
+// TODO: Do not let option be changed if coin flip animation is currently happening.
+// use some loading value shit 
 const selectOption = (option) => {
   selectedOption.value = (option == selectedOption.value ? null : option)
 };
@@ -49,6 +57,7 @@ const readFlip = () => {
     return flipResult.value ? "Tails" : "Heads"
 };
 const getFlip = () => {
+    // TODO: Add logic for ensuring user selected options first before flipping, otherwise alert users 
     flipResult.value = (Math.floor(Math.random() * (100 - 1 + 1)) + 1) % 2 == 0;
     flipNumber.value += 1
     store.appendFlip(readFlip().slice(0, 1))
@@ -62,10 +71,25 @@ const flipResultMessage = computed(() => {
     if (flipResult.value == null) {
         return "does not exist"
     } else {
-        return `${flipNumber.value} ${readFlip()}`
+        return `${flipNumber.value} ${readFlip()} => ${selectedChoices.price} ${selectedChoices.option}`
     }
 });
 
+
+// Necessary?
+const userChoicesStr = computed(() => {
+    if (selectedOption.value == null || selectedPrice.value == null) {
+      return "must have both choices selected"
+    } else {
+      return `User is betting ${selectedOption.value} ${selectedPrice.value}`
+    }
+});
+
+
+watch([selectedOption, selectedPrice], ([option, price]) => {
+  selectedChoices.option = option;
+  selectedChoices.price = price;
+});
 
 </script>
 
